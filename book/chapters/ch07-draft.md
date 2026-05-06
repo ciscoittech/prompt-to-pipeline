@@ -84,7 +84,7 @@ Ask yourself: "What's the worst thing this system could do?" Build a hook for TH
 
 ### Before you start: install jq
 
-Your hook scripts need a tool called `jq` that reads structured data. It's free and takes 10 seconds to install.
+Your hook scripts need a small free program called `jq`. It extracts specific pieces of information from the data Claude Code sends to your hooks. Think of it as a filter that pulls out just the field you need — like the file path or the content — from a larger bundle of information. It takes 10 seconds to install.
 
 On Mac:
 ```
@@ -185,7 +185,7 @@ Here's what each part does, in plain English.
 
 **Check 3 is the important one.** It scans the cover letter for company names (words following "at" — like "at Nexus Technologies") and checks each one against your career-profile skill file. If the letter mentions a company that isn't in your career profile, it gets flagged as a possible fabrication. This is the check that catches the Tuesday-night disaster from the opening scenario.
 
-**`exit 2`** — This is how a hook blocks an action in Claude Code. Exit code 2 means "stop — don't let this through." The error message (sent through `>&2`, which is the error channel) gets shown to Claude, who can then fix the problem.
+**`exit 2`** — An exit code is a number your script sends back to Claude Code when it's done running — like a thumbs up or thumbs down. Exit code 2 means "stop — don't let this through." The error message (sent through `>&2`, which tells the script to route the message back to the program that ran it) gets shown to Claude, who can then fix the problem.
 
 **One critical detail**: exit code 2 blocks. Not exit code 1 — that's different from what you might expect. Exit 0 means "allow." Exit 1 means "something went wrong but don't block." Exit 2 means "block this action." This is the only numbering that matters: **0 = allow, 2 = block.** Everything else lets the action through.
 

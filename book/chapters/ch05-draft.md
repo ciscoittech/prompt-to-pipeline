@@ -289,7 +289,7 @@ State files aren't build-and-forget. They need upkeep — or they rot.
 
 **When to archive.** If your Applications table has 50 rows and 40 are "Rejected" or "Ghosted," those 40 are noise. Move them to an `## Archive` section at the bottom of the file. Keep active state lean: items with status "Applied," "Phone Screen," "Interview," or "Offer."
 
-**The 50-row guideline.** Your state file loads into Claude's context every session through the `@` import. That context has limits — think of it as Claude's working memory. A 20-row table is fine. A 50-row table is getting heavy. Past 100 rows, Claude may start overlooking entries near the bottom. Treat your state file like a clean desk, not a filing cabinet.
+**The 50-row guideline.** Your state file loads into Claude's context every session through the `@` import. Claude's working memory has limits. A 20-row table is fine. A 50-row table is getting heavy. Past 100 rows, Claude may start overlooking entries near the bottom. Treat your state file like a clean desk, not a filing cabinet.
 
 **The monthly check.** Set a calendar reminder. Thirty minutes. Open each state file. What's stale? What's missing? What pattern should be captured that isn't? Unglamorous work. Prevents drift.
 

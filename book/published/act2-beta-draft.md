@@ -317,6 +317,10 @@ When you work in `study-system/`, the AI loads root CLAUDE.md (who you are, shar
 
 This is how scoped context works — general rules at the root, specific rules in the subfolder. It's the same pattern in every tool: Claude Code reads CLAUDE.md files up the directory tree, Codex does the same with AGENTS.md, Cursor with .cursorrules. Learn it once, use it anywhere.
 
+![System v1: Structured prompts with auto-loaded context](../diagrams/png/ch04-system-v1.png)
+
+*Your system after Chapter 4 — structured prompts load automatically, but there's no feedback arrow yet.*
+
 Here's what your system looks like:
 
 ```
@@ -637,7 +641,7 @@ State files aren't build-and-forget. They need upkeep — or they rot.
 
 **When to archive.** If your Applications table has 50 rows and 40 are "Rejected" or "Ghosted," those 40 are noise. Move them to an `## Archive` section at the bottom of the file. Keep active state lean: items with status "Applied," "Phone Screen," "Interview," or "Offer."
 
-**The 50-row guideline.** Your state file loads into Claude's context every session through the `@` import. That context has limits — think of it as Claude's working memory. A 20-row table is fine. A 50-row table is getting heavy. Past 100 rows, Claude may start overlooking entries near the bottom. Treat your state file like a clean desk, not a filing cabinet.
+**The 50-row guideline.** Your state file loads into Claude's context every session through the `@` import. Claude's working memory has limits. A 20-row table is fine. A 50-row table is getting heavy. Past 100 rows, Claude may start overlooking entries near the bottom. Treat your state file like a clean desk, not a filing cabinet.
 
 **The monthly check.** Set a calendar reminder. Thirty minutes. Open each state file. What's stale? What's missing? What pattern should be captured that isn't? Unglamorous work. Prevents drift.
 
@@ -664,7 +668,13 @@ my-ai-systems/
     └── content-state.md       ← NEW: pieces, topics, calendar
 ```
 
-Nine files. Five CLAUDE.md files from Chapter 4, now updated with state references. Four state files that Claude reads and writes every session. The system diagram for all four:
+Nine files. Five CLAUDE.md files from Chapter 4, now updated with state references. Four state files that Claude reads and writes every session.
+
+![System v2: Prompts plus state files creating a feedback loop](../diagrams/png/ch05-system-v2.png)
+
+*Your system after Chapter 5 — the feedback arrow appears. The system remembers.*
+
+The system diagram for all four:
 
 ```
 [Your input] + [CLAUDE.md + State auto-loaded] → [Claude] → [Output + State updated]
@@ -751,7 +761,21 @@ After this chapter:
 [Topic] + [CLAUDE.md + Skill loaded + State read] → [Claude] → [Draft + State write]
 ```
 
-The skill sits alongside the CLAUDE.md — both load before Claude works. But they do different jobs. CLAUDE.md says "write an 800-word blog post, no jargon." The skill says "here's what my writing actually sounds like — here are three paragraphs I wrote, here are the patterns that make my content mine."
+The skill sits alongside the CLAUDE.md — but notice WHERE it loads. Here's the actual sequence when you start a session:
+
+```
+1. You type: claude (or open your AI tool in the content/ folder)
+2. Claude Code reads CLAUDE.md → knows your rules, your constraints
+3. Claude Code scans .claude/skills/ → reads skill names + descriptions
+4. You type your prompt: "Write a blog post about remote work burnout"
+5. Claude matches your request to a skill description → loads editorial-voice
+6. Claude reads content-state.md (via @import) → knows what you've written before
+7. Claude drafts — with your voice loaded from the start, not guessing
+```
+
+The skill doesn't load at startup like CLAUDE.md does. It loads on demand — when Claude decides (or you tell it) the skill matches the current task. That's the difference between instructions (always on) and expertise (loaded when relevant). You don't load your career-profile skill when generating a quiz. You don't load your study-method skill when writing a blog post. Skills are selective.
+
+CLAUDE.md says "write an 800-word blog post, no jargon." The skill says "here's what my writing actually sounds like — here are three paragraphs I wrote, here are the patterns that make my content mine."
 
 ---
 
@@ -787,6 +811,8 @@ Claude can also load skills on its own. It reads the description line from every
 - Skills change rarely. They're stable expertise that evolves slowly
 - State tracks what happened. Skills define how to do things well
 - Both live as files. Both can load automatically. Different purpose
+
+**This isn't a Claude Code feature.** It's a pattern that shows up everywhere. Cursor has `.cursor/rules/` — same idea, different folder name. Codex and Kimi CLI use `AGENTS.md` files that can reference external knowledge docs. Windsurf has its own rules system. The concept is: separate your instructions (what to do) from your expertise (how to do it well), and load the expertise when relevant. If you switch tools next year, your skill files transfer. Rename the folder, keep the content.
 
 And the core design principle, the rule that makes everything in this chapter work: **show, don't describe.** Three examples of your real writing teach Claude more about your voice than 500 words of rules describing your voice. Put the examples in the skill. Cut the rules.
 
@@ -960,7 +986,9 @@ claude
 
 Give it a topic for a blog post. Something you'd actually write about.
 
-What happens: Claude loads CLAUDE.md (format preferences, constraints), loads the editorial-voice skill (your real writing examples), loads content-standards (structure rules, fact-checking), reads content-state.md (what's been written before). Then it drafts.
+Here's what you should see happen. Claude loads CLAUDE.md (format preferences, constraints). It reads content-state.md through the `@` import (what's been written before). Then — because your CLAUDE.md says "load these skills when drafting content" — it loads the editorial-voice and content-standards skills. You might see it mention the skills in its response, or you can type `/editorial-voice` to load it explicitly if it doesn't pick them up automatically. Either way, the skills are in context before Claude writes a word.
+
+Then it drafts.
 
 The draft sounds different from what you got in Chapters 4 and 5. The opening matches your style. The word choices reflect your examples. The tone is yours, not generic. It's not perfect — but it's recognizably closer to your voice than anything the system produced before.
 
@@ -1113,7 +1141,7 @@ Why bother? Because sometimes an update makes things worse. You add a rule that 
 
 **The state-to-skill feedback cycle.** Your state file captures corrections over time. Every month, review: what does Claude keep getting wrong? If there's a pattern, add a rule to the skill. If the rule works — fewer corrections next month — keep it. If it doesn't — new problems appear — roll back.
 
-**When to split a skill.** Keep each SKILL.md under about 500 lines. That's roughly 2,000 words. Beyond that, Claude's attention gets diluted — the last section gets less weight than the first. If your editorial voice skill is growing past that, split it. Voice in one skill, standards in another. Each stays focused.
+**When to split a skill.** Keep each SKILL.md under about 500 lines. That's roughly 2,000 words. Beyond that, the later sections have less influence on Claude's output — it's like reading a long email where you skim the last few paragraphs. If your editorial voice skill is growing past that, split it. Voice in one skill, standards in another. Each stays focused.
 
 **The quarterly check.** Read your skill files. Do they still match how you actually work? Your voice evolves. Your standards shift. A skill that hasn't been updated in six months might be teaching Claude the person you were, not the person you are.
 
@@ -1150,7 +1178,13 @@ my-ai-systems/
     └── content-state.md                   ← (Ch 5)
 ```
 
-Three kinds of files now load before Claude writes a word: instructions (CLAUDE.md), expertise (skills), and history (state). The full Content System:
+Three kinds of files now load before Claude writes a word: instructions (CLAUDE.md), expertise (skills), and history (state).
+
+![System v3: Prompts, state, and skills working together](../diagrams/png/ch06-system-v3.png)
+
+*Your system after Chapter 6 — instructions, expertise, and history all load before Claude writes a word.*
+
+The full Content System:
 
 ```
 [Topic] + [Root CLAUDE.md + Content CLAUDE.md]
@@ -1297,7 +1331,7 @@ Ask yourself: "What's the worst thing this system could do?" Build a hook for TH
 
 ### Before you start: install jq
 
-Your hook scripts need a tool called `jq` that reads structured data. It's free and takes 10 seconds to install.
+Your hook scripts need a small free program called `jq`. It extracts specific pieces of information from the data Claude Code sends to your hooks. Think of it as a filter that pulls out just the field you need — like the file path or the content — from a larger bundle of information. It takes 10 seconds to install.
 
 On Mac:
 ```
@@ -1398,7 +1432,7 @@ Here's what each part does, in plain English.
 
 **Check 3 is the important one.** It scans the cover letter for company names (words following "at" — like "at Nexus Technologies") and checks each one against your career-profile skill file. If the letter mentions a company that isn't in your career profile, it gets flagged as a possible fabrication. This is the check that catches the Tuesday-night disaster from the opening scenario.
 
-**`exit 2`** — This is how a hook blocks an action in Claude Code. Exit code 2 means "stop — don't let this through." The error message (sent through `>&2`, which is the error channel) gets shown to Claude, who can then fix the problem.
+**`exit 2`** — An exit code is a number your script sends back to Claude Code when it's done running — like a thumbs up or thumbs down. Exit code 2 means "stop — don't let this through." The error message (sent through `>&2`, which tells the script to route the message back to the program that ran it) gets shown to Claude, who can then fix the problem.
 
 **One critical detail**: exit code 2 blocks. Not exit code 1 — that's different from what you might expect. Exit 0 means "allow." Exit 1 means "something went wrong but don't block." Exit 2 means "block this action." This is the only numbering that matters: **0 = allow, 2 = block.** Everything else lets the action through.
 
@@ -1665,7 +1699,13 @@ my-ai-systems/
     └── content-state.md
 ```
 
-Four components working together now. Instructions tell Claude what to do. Skills tell it how. State tracks what happened. Hooks verify the result. Look at the system diagram:
+Four components working together now. Instructions tell Claude what to do. Skills tell it how. State tracks what happened. Hooks verify the result.
+
+![System v4: Prompts, state, skills, and hooks with automated guard rails](../diagrams/png/ch07-system-v4.png)
+
+*Your system after Chapter 7 — automated checks sit between Claude's output and your use of it.*
+
+Look at the system diagram:
 
 ```
 [Job posting] + [Root CLAUDE.md + Job CLAUDE.md]
@@ -2112,6 +2152,10 @@ my-ai-systems/
 ```
 
 Five components working together now. Instructions define the system. Skills carry expertise. State tracks history. Hooks verify quality. Connections bring in the world.
+
+![System v5: All five components with external connections](../diagrams/png/ch08-system-v5.png)
+
+*Your system after Chapter 8 — the box is open. External data flows in, guard rails still check everything.*
 
 ```
 [Your notes] + [Root CLAUDE.md + Study CLAUDE.md]
@@ -2610,6 +2654,10 @@ Five CLAUDE.md files. Four state files. Five skills. Five hooks. One settings.js
 
 You started Chapter 4 with a single CLAUDE.md. Six chapters later, you have four systems — each with instructions, memory, expertise, quality checks, external connections, and staged workflows. That's not a prompt. That's infrastructure.
 
+![The complete system: all six components working together](../diagrams/png/ch09-complete-system.png)
+
+*The complete system after Chapter 9 — all six components in place across all four systems.*
+
 ---
 
 ## Break It on Purpose
@@ -2667,15 +2715,15 @@ Now you've seen how to build a system from scratch. Chapter 10 shows you what ha
 
 ---
 
-# Chapter 10: What a Real System Looks Like
+# Chapter 10: How Deep the Rabbit Hole Goes
 
 You just built four systems. Each one has all six components — prompts, state, skills, hooks, connections, pipelines. They work. You can verify they work because you broke them on purpose and watched the guardrails catch the failure.
 
-But they're personal-scale. A study system tracking 30 topics. A job search managing 50 applications. A content pipeline producing one piece at a time.
+But you've been building at personal scale. A study system tracking 30 topics. A job search managing 50 applications. A content pipeline producing one piece at a time.
 
-What happens when someone takes these same patterns and points them at a real business?
+Here's what's happening right now: people with deep domain knowledge — the person who knows their market, their customers, their supply chain — are working at a scale they never could before. Not because they learned machine learning. Because they learned to build systems like the ones you just built, and they pointed those systems at problems they already understood better than anyone.
 
-This chapter answers that question. Not to intimidate you — the components are identical to what you built. But the scale, the data, and the decisions riding on the output are different. This is the ceiling. And every piece of it maps back to something you already know how to build.
+This chapter shows you what that looks like. Every piece of it maps back to something you already know how to build.
 
 ---
 
@@ -2687,7 +2735,7 @@ The problem: this market has layers. Importers sell to distributors. Distributor
 
 They built a system to answer it. An AI agent backed by a database of 22,000+ price quotes, 180+ social media vendor profiles, 274 computer-vision-analyzed competitor posts, and 96 customer survey responses. The agent has 37 tools. It can tell you, in under ten seconds, where any supplier sits in the supply chain, what margin you'd make buying from them, and whether customer demand actually supports the purchase.
 
-Every component in this system is something you've already built. Just bigger.
+This isn't a team of engineers at a well-funded startup. It's one person with the same six components you just learned — pointed at a real market with real money on the line. Every component in this system is something you've already built. Just bigger.
 
 ---
 
@@ -2712,6 +2760,10 @@ When the founder asks "Tell me about Supplier A," the system doesn't look up six
 **Branch 6 — Vision intelligence**: What their social media posts reveal — product quality tiers, packaging, branding, presentation standards.
 
 One pass. Six answers. The result is a complete competitor profile assembled in under a second.
+
+![Data flow: six parallel analyses against one supplier's data](../diagrams/png/ch10-data-flow.png)
+
+*Six branches run in parallel against the same supplier, producing a complete profile in under a second.*
 
 This is the same shape as your hooks from Chapter 7 — multiple checks running against the same input. The difference is scale: instead of three checks on a cover letter, it's six analyses across thousands of data points. But the pattern — parallel checks feeding into a combined result — is identical.
 
@@ -2753,6 +2805,10 @@ When the price data and the language signals agree, confidence is high. A suppli
 
 The result is a supply chain map the founder couldn't have assembled manually. Not because the logic is complex — each individual check is simple. But running it across 22,000 quotes and thousands of messages, for every supplier pair, in every combination? That's where automation earns its keep.
 
+![Supply chain tier classification: price percentiles and language signals](../diagrams/png/ch10-supply-chain-tiers.png)
+
+*How the system classifies suppliers into tiers using price data and language signals.*
+
 ---
 
 ## The Agent Layer: One Question, Thirty-Seven Capabilities
@@ -2792,6 +2848,10 @@ The agent synthesizes all four results into a single recommendation:
 "Buy from Importer Co (distributor tier, $12/gram saffron vs $18 at Metro Spices). Allocate $1,500 to saffron (HIGH demand, 166% margin), $1,200 to vanilla ($8 cost, $28 sell, 250% margin, GROWING demand), $800 to specialty chili oils (trending on social, 200% margin)... Total: 47 units across 5 products. Projected revenue: $14,200. Break-even: sell 18 of 47 units."
 
 Every number came from a tool. Every tool queried the database. The agent's job wasn't to know the answer — it was to know which questions to ask, in which order, and how to combine the results.
+
+![Agent decision flow: how the agent composes tools to answer a buy decision](../diagrams/png/ch10-agent-decision.png)
+
+*The agent's four-step reasoning chain — each tool call feeds context to the next.*
 
 Your skills from Chapter 6 gave Claude expertise in one domain at a time. This system's 37 tools give the agent expertise across finance, market intelligence, competitive analysis, field operations, inventory, social media trends, demand scoring, supply chain mapping, shipping logistics, and task management. Same concept — externalized knowledge loaded on demand. Different scale.
 
@@ -2863,6 +2923,10 @@ Here's the production system, mapped to what you built:
 
 **Pipeline → Data ingestion through agent reasoning.** Your content pipeline moved a draft through research, writing, review, and publishing stages. This system's pipeline runs: data ingestion → entity normalization → aggregation → agent reasoning → validated recommendation. Different domain. Same shape. Stages that feed each other, with quality gates between them.
 
+![Component map: every production component mapped to what you built](../diagrams/png/ch10-component-map.png)
+
+*Every component in the production system maps to something you already know how to build.*
+
 ---
 
 ## What Makes It Production
@@ -2881,15 +2945,21 @@ The patterns are familiar. But production systems differ from personal ones in w
 
 ---
 
-## Your Systems Will Grow
+## Domain Knowledge Is the Multiplier
 
-Your Study System could become this. Imagine it tracking not 30 topics but 3,000 exam questions across 50 study sessions. Imagine it scoring your mastery with multi-signal confidence (quiz performance, spaced repetition decay, topic interconnection mapping) and recommending what to study next with the same weighted-scoring approach this system uses for buy decisions.
+The system you just saw wasn't built by an AI researcher. It was built by someone who knows their market — who's spent years understanding which suppliers are reliable, which products move, which price signals matter. The AI didn't replace that knowledge. It amplified it.
 
-Your Content System could become this. Imagine it tracking not 20 published pieces but 500 — with engagement data flowing back into the state, informing the pipeline's topic selection, calibrating the voice skill based on what resonates.
+That's the pattern worth paying attention to. The people getting the most from AI systems aren't the ones with the deepest technical skills. They're the ones with the deepest domain knowledge who learned to build systems around what they already know. A supply chain expert who can now track 50 suppliers instead of 5. A content strategist who can now produce and quality-check 10 pieces a week instead of 2. A project manager who can now monitor 20 workstreams with the same attention they used to give 4.
+
+The domain knowledge was always the hard part. It takes years to build. The system just lets it operate at a scale that wasn't possible when every task required manual attention.
+
+Your Study System could become this. Track not 30 topics but 3,000 exam questions across 50 study sessions. Score mastery with multi-signal confidence. Recommend what to study next with weighted scoring.
+
+Your Content System could become this. Track not 20 published pieces but 500 — with engagement data flowing back into state, informing topic selection, calibrating the voice skill based on what resonates.
 
 The components are the same. The patterns are the same. The scale is different. And the scale comes not from learning new concepts, but from feeding more data into the concepts you already know.
 
-Now — your systems work, and you've seen where they can go. The next question is practical: what do they cost to run, and how do you spend smart? That's Chapter 11.
+Now — your systems work, and you've seen what's possible when domain knowledge meets the components you just learned. The next question is practical: what do they cost to run, and how do you spend smart? That's Chapter 11.
 
 
 ---
@@ -2932,6 +3002,8 @@ Notice the Content pipeline is 25-100x more expensive than a study quiz. That's 
 
 The subagent model matters here too. If your pipeline spawns subagents — separate AI sessions that handle individual stages — each one loads its own context from scratch. That means each subagent pays the startup cost independently. Three subagents in a pipeline means three loads of your CLAUDE.md, three loads of relevant state. It's more organized, but it's not free.
 
+<!-- DIAGRAM NEEDED: Token cost breakdown showing startup cost (CLAUDE.md + state + skills) versus per-action cost for different system operations (quiz, cover letter, pipeline). Visual that makes the "idle cost" concept concrete. -->
+
 ---
 
 ## The Model Ladder
@@ -2960,6 +3032,8 @@ How this maps to your four systems:
 - **Project Management**: Status report generation is standard. Date math and dependency checks are fast-tier tasks.
 
 The rule of thumb: if the task is following rules (formatting, checking, classifying), use the cheapest model. If the task requires judgment (writing, strategy, synthesis), use the model that's good at judgment.
+
+<!-- DIAGRAM NEEDED: Model ladder showing fast/standard/reasoning tiers with example tasks at each level and relative cost ratios. Visual decision tree for "which tier does this task need?" -->
 
 Here's what model routing looks like in practice. Say your Content System runs a five-stage pipeline: research, outline, draft, review, publish. Without routing, every stage uses the same standard-tier model. With routing:
 
@@ -3164,6 +3238,8 @@ Every system failure you'll ever see maps to a component you built. Here's the d
 
 Notice what's NOT in this table: "The AI is broken." In six months of building these systems, you will never fix a problem by blaming the AI. Every failure maps to a component YOU built. That's not an insult — it's freedom. If you built it, you can fix it.
 
+<!-- DIAGRAM NEEDED: Failure taxonomy flowchart — symptom on the left, arrows leading through component identification to the specific file/check to inspect. A visual diagnostic map the reader can reference when debugging. -->
+
 ---
 
 ## The Debugging Protocol
@@ -3181,6 +3257,8 @@ Five steps. Not a flowchart to memorize — a habit to build.
 **Step 5: Add a check.** Whatever just broke, make sure you'll know if it breaks again. If the skill wasn't loading, add a line to your CLAUDE.md: "At session start, confirm you've loaded the career-profile skill." If the hook wasn't firing, add a test to your monthly maintenance: "Feed a fake company name and verify the hook catches it." The fix stops the bleeding. The check prevents the recurrence.
 
 The protocol takes 5 minutes when you follow it. It takes 45 minutes when you skip to guessing.
+
+<!-- DIAGRAM NEEDED: The 5-step debugging protocol as a linear flow: Symptom -> Map to Component -> Isolate -> Fix -> Add Check. Each step with a one-line description of what happens there. -->
 
 ---
 
@@ -3395,6 +3473,8 @@ The Content System's fact-check hook already verifies sources. Add a check: if t
 
 When to use: when one system makes claims about what another system produced.
 
+<!-- DIAGRAM NEEDED: Four composition patterns side by side — Chain, Shared State, Shared Skills, Cross-system Hooks — each as a simple 2-system diagram showing how data flows between systems. -->
+
 ---
 
 ## Build It: The Master Index
@@ -3597,6 +3677,8 @@ The test takes 10 minutes. Run it now, while the connections are fresh. You'll b
 
 Four independent systems. One index for visibility. Shared skills for common expertise. Each system reads the index for cross-system context. Each system updates the index after sessions. Remove any line — every system still works. That's composition.
 
+<!-- DIAGRAM NEEDED: Full architecture diagram showing all four systems connected through the master index, with shared skills and cross-system hooks visible. The "personal AI operating system" overview. -->
+
 ---
 
 ## What You Built
@@ -3724,6 +3806,8 @@ Meal planning example: "I paste my dietary restrictions, what's in my fridge, wh
 
 Your turn. Map your current workflow. What do you paste? What do you check? What do you wish it remembered?
 
+<!-- DIAGRAM NEEDED: The "before" workflow — a simple linear diagram showing [What you type] -> [AI] -> [What you get] -> [What you check/fix by hand], with the manual work highlighted as the problem area. -->
+
 ### Step 3: Identify the constraint.
 
 Of everything that breaks, what breaks MOST or costs the MOST? That's the constraint. Fix that first. Ignore everything else until it's resolved.
@@ -3811,6 +3895,8 @@ Components: CLAUDE.md (preferences, household size). Cooking skill (cuisines, co
 Monthly maintenance: update fridge staples list, review whether preferred cuisines have shifted, verify allergy list is current, archive meal plans older than 8 weeks.
 
 Your turn. Draw the diagram. List the components. Write the maintenance plan.
+
+<!-- DIAGRAM NEEDED: The 8-step design process as a visual flow — from Frustration through Document — showing where the reader loops back (Step 6 adds components iteratively) and where gates exist (Step 7 tests by breaking). -->
 
 ---
 
@@ -3964,6 +4050,8 @@ Or — and this is the subtle one — trust calibration. The AI's output gets go
 
 The framework — Instruction, Memory, Control, Flow — doesn't expire when the tools change. It's a map of the territory. The territory evolves. The map still works.
 
+<!-- DIAGRAM NEEDED: System evolution diagram showing three paths — component removal (problem solved upstream), component migration (same concept, new implementation), and new constraints (bottleneck shifts). Visual showing that the four concepts persist even as implementations change. -->
+
 ---
 
 ## Staying Current Without Drowning
@@ -4093,6 +4181,8 @@ What you have now that you didn't have 14 chapters ago:
 **1 evaluation framework** that lets you assess any new AI tool in 30 minutes
 
 This toolkit doesn't expire when the next model ships. It doesn't become obsolete when a new tool launches. The concepts are permanent. The implementations adapt. That's the difference between learning prompts — which change every release cycle — and learning systems, which transfer across everything.
+
+<!-- DIAGRAM NEEDED: The complete toolkit summary — 4 concepts, 6 components, 3 patterns, 1 debugging protocol, 1 design process — as a single reference visual. The "tear this page out and tape it to your monitor" diagram. -->
 
 ---
 

@@ -410,7 +410,7 @@ Why bother? Because sometimes an update makes things worse. You add a rule that 
 
 **The state-to-skill feedback cycle.** Your state file captures corrections over time. Every month, review: what does Claude keep getting wrong? If there's a pattern, add a rule to the skill. If the rule works — fewer corrections next month — keep it. If it doesn't — new problems appear — roll back.
 
-**When to split a skill.** Keep each SKILL.md under about 500 lines. That's roughly 2,000 words. Beyond that, Claude's attention gets diluted — the last section gets less weight than the first. If your editorial voice skill is growing past that, split it. Voice in one skill, standards in another. Each stays focused.
+**When to split a skill.** Keep each SKILL.md under about 500 lines. That's roughly 2,000 words. Beyond that, the later sections have less influence on Claude's output — it's like reading a long email where you skim the last few paragraphs. If your editorial voice skill is growing past that, split it. Voice in one skill, standards in another. Each stays focused.
 
 **The quarterly check.** Read your skill files. Do they still match how you actually work? Your voice evolves. Your standards shift. A skill that hasn't been updated in six months might be teaching Claude the person you were, not the person you are.
 
