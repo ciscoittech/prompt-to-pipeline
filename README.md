@@ -118,6 +118,13 @@ Leave feedback as [GitHub Issues](../../issues) or in-line comments on the files
 - [Act 1 Detailed Outlines](book/chapters/act1-detailed-outlines.md)
 - [Act 1 Review v1](book/chapters/act1-review.md) | [v2 (post-research)](book/chapters/act1-review-v2.md)
 
+### Appendices
+- [A — System Component Reference](book/appendices/a-component-reference.md) — all 6 components with templates
+- [B — Complete System Files](book/appendices/b-system-files.md) — all 4 systems, every file
+- [C — Troubleshooting](book/appendices/c-troubleshooting.md) — failures by component
+- [D — Glossary](book/appendices/d-glossary.md) — plain-language definitions
+- [E — Resources](book/appendices/e-resources.md) — CLI tools, GUI alternatives, systems thinking books
+
 ### How the Book Is Made
 - [CLAUDE.md — Project Instructions](CLAUDE.md)
 - [Scoring Rubric](/.claude/skills/book-writer/references/scoring.md)
