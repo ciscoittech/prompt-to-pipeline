@@ -42,6 +42,8 @@ Each starts as a basic prompt and grows across the book into a full 6-component 
 | Act 1 drafts (Ch 1-3) | Done — ~10,800 words |
 | Act 1 review | Done — all pass (28, 30, 28 out of 30) |
 | Act 2 drafts (Ch 4-13) | Not started |
+| Research methodology | Done — 3 production systems documented, eval framework defined |
+| Prompt eval notebooks | Scaffolded — 6 notebooks mapped to chapters |
 | Agentic production system | Done — 5 skills, 7 commands, 4 hooks |
 
 ## Quick Links
@@ -66,6 +68,14 @@ Each starts as a basic prompt and grows across the book into a full 6-component 
 - [Editor Skill](/.claude/skills/book-editor/SKILL.md)
 - [Scoring Rubric](/.claude/skills/book-writer/references/scoring.md)
 - [Voice Rules](/.claude/skills/book-writer/references/voice.md)
+
+### Research & Evals
+- [Research Overview](research/README.md)
+- [Evaluation Methodology](research/METHODOLOGY.md)
+- [Prompt Eval Notebooks](research/evals/)
+- [Study System Evidence](research/systems/study-system/) — 127-item curriculum, quiz scoring, gap tracking
+- [Work System Evidence](research/systems/work-system/) — 15 agents, 15 skills, 80K+ doc RAG
+- [Content System Evidence](research/systems/content-system/) — 7-stage pipeline, 26 posts scored
 
 ### Reference
 - [Appendix A — System Component Reference](book/appendices/a-prompt-library.md)
