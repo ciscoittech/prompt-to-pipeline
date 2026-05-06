@@ -1,141 +1,154 @@
 # From Prompts to Pipelines
 
-**A Systems-Based Approach to Prompt Engineering and Agentic Workflows**
+### A Systems-Based Approach to Prompt Engineering and Agentic Workflows
 
-A book teaching knowledge workers a systems-based approach to prompt engineering and agentic workflows. You learn to decompose work into components (instructions, memory, control, flow) and wire them together — moving from one-shot prompts to full AI systems that produce reliable results every time.
+You've used AI a hundred times. Sometimes it's magic. Sometimes it's useless. You re-explain your background every session. You manually check every output. You paste the same context into a new chat window and hope for the best.
 
----
+**The problem isn't the AI. The problem is you're writing prompts when you should be building systems.**
 
-## Beta Readers — Start Here
+A prompt is one input. A system is the whole loop — instruction, memory, control, and flow. This book teaches you to see the system, then build it. You'll go from one-shot prompts that work once to full pipelines that run reliably, remember what happened, catch their own mistakes, and get better over time.
 
-Act 1 is ready for review. Three chapters, ~11,000 words. Read them in order — each builds on the last.
-
-### Read the Chapters
-
-1. **[Chapter 1 — You're Already Building Systems (You're Just Building Them Badly)](book/chapters/ch01-draft.md)** (~3,000 words)
-   The opener. You run a study quiz in any AI tool, get good results — then open a new chat and watch it forget everything. Four concepts introduced: Instruction, Memory, Control, Flow.
-
-2. **[Chapter 2 — Going Deeper: What Each Concept Actually Means](book/chapters/ch02-draft.md)** (~3,700 words)
-   You push the Study System through 3 more sessions, each manually patching a concept. Structured prompts, pasted progress notes, fact-checking, staged pipelines. Each one helps. Each one breaks under manual overhead.
-
-3. **[Chapter 3 — Design Patterns: Three Shapes Every System Takes](book/chapters/ch03-draft.md)** (~4,300 words)
-   Loop, Gate, Router — three patterns that describe every system. You design the Study System on paper with a napkin sketch. Act 1 ends here — you have vocabulary, experience, and a blueprint.
-
-### See the Diagrams
-
-Each chapter has visual diagrams showing how the system grows:
-
-| Chapter 1 | Chapter 2 | Chapter 3 |
-|-----------|-----------|-----------|
-| ![Four Concepts](book/diagrams/png/ch01-four-concepts.png) | ![Manual Overhead](book/diagrams/png/ch02-manual-overhead.png) | ![Napkin Sketch](book/diagrams/png/ch03-napkin-sketch.png) |
-| *After Session 2: only Instruction is present* | *By Session 5: you're doing 80% of the work* | *The full Study System with all 3 patterns* |
-
-[All 9 diagrams →](book/diagrams/)
-
-### See the Evidence
-
-The book's claims are backed by real data:
-
-- **[Prompt Eval: Basic vs Structured](research/evals/notebooks/01-prompt-structure.ipynb)** — We ran the same quiz task with a vague prompt and a structured prompt. Scored on 4 dimensions. Result: **11/20 vs 20/20, every run.** ([methodology](research/METHODOLOGY.md))
-
-- **[Study System](research/systems/study-system/)** — The author's real 127-item curriculum tracker with quiz scoring, gap detection, and adaptive sessions. Not a demo. ([sample prompts](research/systems/study-system/sample-prompts.md))
-
-- **[Work System](research/systems/work-system/)** — 15 specialized agents, 15 domain skills, 80,000+ reference documents. Production advisor system. ([sample prompts](research/systems/work-system/sample-prompts.md))
-
-- **[Content System](research/systems/content-system/)** — 7-stage pipeline, 26 posts tracked, 6-dimension scoring with 24/30 minimum gate. 15 drafts rejected back to rework. ([sample prompts](research/systems/content-system/sample-prompts.md))
-
-### What We're Looking For
-
-- **Clarity**: Can you follow every sentence? Where did you get lost?
-- **Does it land?**: After reading all 3 chapters, can you explain to someone why a prompt isn't a system?
-- **The exercises**: Did you actually run Sessions 1-2 (Ch 1) and Sessions 3-5 (Ch 2)? If not, what stopped you?
-- **The patterns**: After Ch 3, could you sketch a system for one of your own tasks?
-- **What's missing**: Anything you expected that wasn't there?
-
-Leave feedback as [GitHub Issues](../../issues) or in-line comments on the files.
+> *"We tested this. Same AI, same task. Vague prompt: 11 out of 20. Structured prompt: 20 out of 20. Every run."*
+> — [Eval notebook with full results](research/evals/notebooks/01-prompt-structure.ipynb)
 
 ---
 
-## Full Outline
+## What You'll Build
 
-**2 Acts, 13 Chapters, 4 Throughline Systems**
+Four real systems that grow across the entire book. Each starts as a basic prompt and ends as a full 6-component pipeline.
 
-| Act | Chapters | What Happens |
-|-----|----------|-------------|
-| **Act 1: The System** | Ch 1-3 | Universal systems thinking. Tool-agnostic. 5 study sessions in any AI tool. |
-| **Act 2: The Build** | Ch 4-13 | Real systems in Claude Code. Each chapter adds one component to 4 throughline systems. |
+| System | You Start With | You End With |
+|--------|---------------|-------------|
+| **Study** | "Quiz me on cloud computing" | An adaptive learning system that tracks your weak areas, adjusts difficulty, verifies its own answers, pulls live data, and plans your next session automatically |
+| **Job Hunting** | "Write me a cover letter" | A career campaign system that tracks every application, tailors materials from your loaded career profile, catches fabricated details before you send, and learns which approaches get callbacks |
+| **Project Management** | "Help me plan this project" | A project operations system that pulls live data from your tools, generates status updates for different audiences, flags risks, and never loses track of what's been done |
+| **Content** | "Write a blog post about X" | A content pipeline that researches, drafts in your voice, fact-checks against sources, enforces quality gates, and distributes across platforms |
 
-**4 Throughline Systems** (each grows from a basic prompt to a full 6-component system):
-- **Study** — from "quiz me" to adaptive learning with gap tracking
-- **Job Hunting** — from one-shot cover letters to a tracked campaign with validation
-- **Project Management** — from to-do lists to audience-routed status reports
-- **Content** — from generic drafts to a voice-matched production pipeline
-
-**The Framework**:
-- 4 Universal Concepts: Instruction, Memory, Control, Flow
-- 6 Implementation Components: Prompt, State, Skill, Hook, Connection, Pipeline
-- 3 Design Patterns: Loop, Gate, Router
-
-[Full outline with all 13 chapters →](book/outline-v3.md)
+These aren't hypothetical. The author runs all four in production. [See the evidence.](research/systems/)
 
 ---
 
-## Current Status
+## What Makes This Different
 
-| Area | Status |
-|------|--------|
-| Act 1 drafts (Ch 1-3) | **Done** — ~11,000 words, scored 28-30/30 per chapter |
-| Act 1 review | **Done** — [v1 review](book/chapters/act1-review.md), [v2 review](book/chapters/act1-review-v2.md) |
-| Research & evidence | **Done** — 3 production systems documented, 1 eval notebook run |
-| Act 2 detailed outlines | Next up |
-| Act 2 drafts (Ch 4-13) | Not started |
+**Every other AI book teaches prompts. This one teaches systems.**
 
----
-
-## All Links
-
-### Chapters
-| # | Title | Words | Score |
-|---|-------|-------|-------|
-| 1 | [You're Already Building Systems](book/chapters/ch01-draft.md) | ~3,000 | 28/30 |
-| 2 | [Going Deeper](book/chapters/ch02-draft.md) | ~3,700 | 30/30 |
-| 3 | [Design Patterns](book/chapters/ch03-draft.md) | ~4,300 | 29/30 |
-
-### Diagrams
-- [All diagrams with previews](book/diagrams/) — 9 diagrams across 3 chapters
-- [Mermaid source files](book/diagrams/src/) — editable, version-controlled
-
-### Research & Evidence
-- [Evaluation Methodology](research/METHODOLOGY.md)
-- [Prompt Eval: Structured vs Basic](research/evals/notebooks/01-prompt-structure.ipynb) — baseline 11/20, treatment 20/20
-- [Study System Evidence](research/systems/study-system/) — 127 items, quiz scoring, gap tracking
-- [Work System Evidence](research/systems/work-system/) — 15 agents, 80K+ docs
-- [Content System Evidence](research/systems/content-system/) — 7-stage pipeline, 26 posts
-
-### Planning
-- [Full Outline (v3)](book/outline-v3.md)
-- [Progress Tracker](book/book-state.md)
-- [Act 1 Detailed Outlines](book/chapters/act1-detailed-outlines.md)
-- [Act 1 Review v1](book/chapters/act1-review.md) | [v2 (post-research)](book/chapters/act1-review-v2.md)
-
-### Appendices
-- [A — System Component Reference](book/appendices/a-component-reference.md) — all 6 components with templates
-- [B — Complete System Files](book/appendices/b-system-files.md) — all 4 systems, every file
-- [C — Troubleshooting](book/appendices/c-troubleshooting.md) — failures by component
-- [D — Glossary](book/appendices/d-glossary.md) — plain-language definitions
-- [E — Resources](book/appendices/e-resources.md) — CLI tools, GUI alternatives, systems thinking books
-
-### How the Book Is Made
-- [CLAUDE.md — Project Instructions](CLAUDE.md)
-- [Scoring Rubric](/.claude/skills/book-writer/references/scoring.md)
-- [Voice Rules](/.claude/skills/book-writer/references/voice.md)
-
----
-
-## Production Pipeline
+Most books stop at "write better prompts." That's one component. This book teaches six:
 
 ```
-DETAILED OUTLINE → DRAFT → REVIEW (score >= 20/30) → RESEARCH ENRICHMENT → PUBLISH
+PROMPT → STATE → SKILL → HOOK → CONNECTION → PIPELINE
+(what you    (what it    (loaded     (automated   (live external   (multi-stage
+ tell it)    remembers)   expertise)   checks)      data)            workflows)
 ```
 
-Every chapter is scored on 6 dimensions (1-5 each): Clarity, Systems Thinking, Voice, Build Quality, Progression, Quality Gate. Minimum 20/30 to publish. Every claim maps to evidence in the research section.
+Each chapter adds one component. By the end, your systems have all six working together.
+
+**It's not tied to one tool.** The concepts work in Claude Code, OpenAI Codex, Kimi CLI, Cursor, or whatever ships next year. The tools change. The framework doesn't.
+
+**Every claim is backed by evidence.** Not "trust me" — [here's the data](research/METHODOLOGY.md). Eval notebooks you can run yourself. Three production systems documented with real metrics. A 127-item study curriculum with actual quiz scores. A content pipeline that's produced 26 posts with quality scoring.
+
+---
+
+## Read It Now (Free)
+
+**Act 1 is free.** Three chapters, ~11,000 words. You'll run 5 hands-on sessions in any AI tool and walk away understanding why your prompts break — and what to do about it.
+
+### [Read Act 1 →](book/published/act1-beta-draft.md)
+
+Or read chapter by chapter:
+
+1. **[You're Already Building Systems](book/chapters/ch01-draft.md)** — The opener. You run a study quiz, get great results, then watch it forget everything. The four concepts: Instruction, Memory, Control, Flow.
+
+2. **[Going Deeper](book/chapters/ch02-draft.md)** — You push through 3 more sessions, manually patching each concept. Each one helps. Each one breaks under its own overhead.
+
+3. **[Design Patterns](book/chapters/ch03-draft.md)** — Loop, Gate, Router — three shapes that describe every AI system. You design yours on a napkin.
+
+![The Study System — Napkin Sketch](book/diagrams/png/ch03-napkin-sketch.png)
+*By Chapter 3, you can design a system on paper. Act 2 builds it for real.*
+
+---
+
+## The Evidence
+
+This book shows its work.
+
+| Evidence | What It Proves |
+|----------|---------------|
+| [Prompt Eval: 11/20 → 20/20](research/evals/notebooks/01-prompt-structure.ipynb) | Structured prompts aren't marginally better — they're categorically better |
+| [Study System (production)](research/systems/study-system/) | 127 items, quiz scoring, gap detection — this is what a real state file looks like |
+| [Work System (production)](research/systems/work-system/) | 15 agents, 15 skills, 80K+ reference docs — this is what skills at scale look like |
+| [Content System (production)](research/systems/content-system/) | 7-stage pipeline, 26 posts, 24/30 quality gate — this is what pipelines do |
+| [Evaluation Methodology](research/METHODOLOGY.md) | How we test, how we score, how to reproduce |
+
+---
+
+## The Framework
+
+**4 Universal Concepts** — tool-agnostic, work everywhere:
+
+| Concept | The Failure It Prevents |
+|---------|------------------------|
+| **Instruction** | "It didn't do what I wanted" |
+| **Memory** | "I have to re-explain everything every time" |
+| **Control** | "It gave me confident garbage" |
+| **Flow** | "It tried to do everything at once" |
+
+**6 Implementation Components** — what you build:
+
+| Component | Chapter | What It Does |
+|-----------|---------|-------------|
+| Prompt | Ch 4 | Persistent project instructions (CLAUDE.md / AGENTS.md) |
+| State | Ch 5 | Files that track what happened across sessions |
+| Skill | Ch 6 | Reusable expertise docs loaded on demand |
+| Hook | Ch 7 | Automated checks that catch mistakes |
+| Connection | Ch 8 | Live data from external tools and APIs |
+| Pipeline | Ch 9 | Multi-stage workflows with quality gates |
+
+**3 Design Patterns** — how components connect:
+
+| Pattern | When to Use It |
+|---------|---------------|
+| **Loop** | Output can be measured and improved (draft → review → revise) |
+| **Gate** | Bad output costs more than checking it (cover letter → verify → send) |
+| **Router** | Different inputs need different handling (CEO gets summary, team gets details) |
+
+---
+
+## Full Book Outline
+
+| Ch | Title | What You Build |
+|----|-------|---------------|
+| 1 | You're Already Building Systems | Recognize the invisible manual system you're running |
+| 2 | Going Deeper | Push each concept manually, feel why it breaks |
+| 3 | Design Patterns | Loop, Gate, Router — design your system on a napkin |
+| 4 | Structured Prompts | CLAUDE.md — the file that makes AI remember your project |
+| 5 | State Files | A tracker that carries forward what happened |
+| 6 | Skills | Loaded expertise — your voice, your rules, on demand |
+| 7 | Hooks | Automated checks that refuse to let bad output through |
+| 8 | Connections | Live data from the outside world |
+| 9 | Pipelines | Multi-stage workflows with quality gates |
+| 10 | When Systems Break | Every failure maps to a component — diagnose and fix |
+| 11 | Composing Systems | Wire your systems together into a personal AI OS |
+| 12 | Designing New Systems | Build one from scratch, for a problem the book never covered |
+| 13 | What's Next | The framework outlasts every tool |
+
+[Full detailed outline →](book/outline-v3.md)
+
+---
+
+## Get Involved
+
+**Read Act 1 and tell us what you think.** Leave feedback as [GitHub Issues](../../issues) — what clicked, what confused you, what's missing.
+
+**Run the evals yourself.** The [notebooks](research/evals/) work with any AI API (OpenRouter, OpenAI, Anthropic). See the difference between prompts and systems with your own data.
+
+**Follow the build.** This book is being written in public. The [dev docs](dev/) show how every chapter is planned, drafted, reviewed, and scored. The production pipeline is the same systems-thinking approach the book teaches.
+
+---
+
+## About
+
+Written by a network engineer who builds AI systems in production — not a researcher writing about theory. Three real systems (study, work, content) run daily and inform every chapter. The research repository contains the evidence. The eval notebooks are reproducible.
+
+The book is CLI-demonstrated (terminal-first, because you need to see the system's parts) and interface-agnostic (same patterns work in Claude Code, Codex, Kimi CLI, Cursor, or whatever ships next).
+
+**[Start reading →](book/published/act1-beta-draft.md)**
