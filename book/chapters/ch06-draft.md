@@ -447,7 +447,13 @@ my-ai-systems/
     └── content-state.md                   ← (Ch 5)
 ```
 
-Three kinds of files now load before Claude writes a word: instructions (CLAUDE.md), expertise (skills), and history (state). The full Content System:
+Three kinds of files now load before Claude writes a word: instructions (CLAUDE.md), expertise (skills), and history (state).
+
+![System v3: Prompts, state, and skills working together](../diagrams/png/ch06-system-v3.png)
+
+*Your system after Chapter 6 — instructions, expertise, and history all load before Claude writes a word.*
+
+The full Content System:
 
 ```
 [Topic] + [Root CLAUDE.md + Content CLAUDE.md]

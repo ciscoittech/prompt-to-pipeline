@@ -452,7 +452,13 @@ my-ai-systems/
     └── content-state.md
 ```
 
-Four components working together now. Instructions tell Claude what to do. Skills tell it how. State tracks what happened. Hooks verify the result. Look at the system diagram:
+Four components working together now. Instructions tell Claude what to do. Skills tell it how. State tracks what happened. Hooks verify the result.
+
+![System v4: Prompts, state, skills, and hooks with automated guard rails](../diagrams/png/ch07-system-v4.png)
+
+*Your system after Chapter 7 — automated checks sit between Claude's output and your use of it.*
+
+Look at the system diagram:
 
 ```
 [Job posting] + [Root CLAUDE.md + Job CLAUDE.md]

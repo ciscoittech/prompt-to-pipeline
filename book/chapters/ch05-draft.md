@@ -316,7 +316,13 @@ my-ai-systems/
     └── content-state.md       ← NEW: pieces, topics, calendar
 ```
 
-Nine files. Five CLAUDE.md files from Chapter 4, now updated with state references. Four state files that Claude reads and writes every session. The system diagram for all four:
+Nine files. Five CLAUDE.md files from Chapter 4, now updated with state references. Four state files that Claude reads and writes every session.
+
+![System v2: Prompts plus state files creating a feedback loop](../diagrams/png/ch05-system-v2.png)
+
+*Your system after Chapter 5 — the feedback arrow appears. The system remembers.*
+
+The system diagram for all four:
 
 ```
 [Your input] + [CLAUDE.md + State auto-loaded] → [Claude] → [Output + State updated]

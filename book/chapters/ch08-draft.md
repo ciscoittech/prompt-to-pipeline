@@ -375,6 +375,10 @@ my-ai-systems/
 
 Five components working together now. Instructions define the system. Skills carry expertise. State tracks history. Hooks verify quality. Connections bring in the world.
 
+![System v5: All five components with external connections](../diagrams/png/ch08-system-v5.png)
+
+*Your system after Chapter 8 — the box is open. External data flows in, guard rails still check everything.*
+
 ```
 [Your notes] + [Root CLAUDE.md + Study CLAUDE.md]
              + [study-method skill]

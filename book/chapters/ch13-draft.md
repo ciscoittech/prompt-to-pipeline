@@ -54,6 +54,8 @@ The Content System's fact-check hook already verifies sources. Add a check: if t
 
 When to use: when one system makes claims about what another system produced.
 
+<!-- DIAGRAM NEEDED: Four composition patterns side by side — Chain, Shared State, Shared Skills, Cross-system Hooks — each as a simple 2-system diagram showing how data flows between systems. -->
+
 ---
 
 ## Build It: The Master Index
@@ -255,6 +257,8 @@ The test takes 10 minutes. Run it now, while the connections are fresh. You'll b
 ```
 
 Four independent systems. One index for visibility. Shared skills for common expertise. Each system reads the index for cross-system context. Each system updates the index after sessions. Remove any line — every system still works. That's composition.
+
+<!-- DIAGRAM NEEDED: Full architecture diagram showing all four systems connected through the master index, with shared skills and cross-system hooks visible. The "personal AI operating system" overview. -->
 
 ---
 

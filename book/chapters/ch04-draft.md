@@ -303,6 +303,10 @@ When you work in `study-system/`, the AI loads root CLAUDE.md (who you are, shar
 
 This is how scoped context works — general rules at the root, specific rules in the subfolder. It's the same pattern in every tool: Claude Code reads CLAUDE.md files up the directory tree, Codex does the same with AGENTS.md, Cursor with .cursorrules. Learn it once, use it anywhere.
 
+![System v1: Structured prompts with auto-loaded context](../diagrams/png/ch04-system-v1.png)
+
+*Your system after Chapter 4 — structured prompts load automatically, but there's no feedback arrow yet.*
+
 Here's what your system looks like:
 
 ```

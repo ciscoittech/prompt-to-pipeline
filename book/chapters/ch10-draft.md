@@ -44,6 +44,10 @@ When the founder asks "Tell me about Supplier A," the system doesn't look up six
 
 One pass. Six answers. The result is a complete competitor profile assembled in under a second.
 
+![Data flow: six parallel analyses against one supplier's data](../diagrams/png/ch10-data-flow.png)
+
+*Six branches run in parallel against the same supplier, producing a complete profile in under a second.*
+
 This is the same shape as your hooks from Chapter 7 — multiple checks running against the same input. The difference is scale: instead of three checks on a cover letter, it's six analyses across thousands of data points. But the pattern — parallel checks feeding into a combined result — is identical.
 
 ### Supply Chain Forensics: Who Supplies Whom
@@ -84,6 +88,10 @@ When the price data and the language signals agree, confidence is high. A suppli
 
 The result is a supply chain map the founder couldn't have assembled manually. Not because the logic is complex — each individual check is simple. But running it across 22,000 quotes and thousands of messages, for every supplier pair, in every combination? That's where automation earns its keep.
 
+![Supply chain tier classification: price percentiles and language signals](../diagrams/png/ch10-supply-chain-tiers.png)
+
+*How the system classifies suppliers into tiers using price data and language signals.*
+
 ---
 
 ## The Agent Layer: One Question, Thirty-Seven Capabilities
@@ -123,6 +131,10 @@ The agent synthesizes all four results into a single recommendation:
 "Buy from Importer Co (distributor tier, $12/gram saffron vs $18 at Metro Spices). Allocate $1,500 to saffron (HIGH demand, 166% margin), $1,200 to vanilla ($8 cost, $28 sell, 250% margin, GROWING demand), $800 to specialty chili oils (trending on social, 200% margin)... Total: 47 units across 5 products. Projected revenue: $14,200. Break-even: sell 18 of 47 units."
 
 Every number came from a tool. Every tool queried the database. The agent's job wasn't to know the answer — it was to know which questions to ask, in which order, and how to combine the results.
+
+![Agent decision flow: how the agent composes tools to answer a buy decision](../diagrams/png/ch10-agent-decision.png)
+
+*The agent's four-step reasoning chain — each tool call feeds context to the next.*
 
 Your skills from Chapter 6 gave Claude expertise in one domain at a time. This system's 37 tools give the agent expertise across finance, market intelligence, competitive analysis, field operations, inventory, social media trends, demand scoring, supply chain mapping, shipping logistics, and task management. Same concept — externalized knowledge loaded on demand. Different scale.
 
@@ -193,6 +205,10 @@ Here's the production system, mapped to what you built:
 **Connections → Multiple data sources.** Your connections in Chapter 8 pulled data from one or two external sources. This system ingests from trade channel messages, social media APIs, field notes from market visits, customer surveys, vision-analyzed images, and web search results. Each source feeds a different dimension of the intelligence picture.
 
 **Pipeline → Data ingestion through agent reasoning.** Your content pipeline moved a draft through research, writing, review, and publishing stages. This system's pipeline runs: data ingestion → entity normalization → aggregation → agent reasoning → validated recommendation. Different domain. Same shape. Stages that feed each other, with quality gates between them.
+
+![Component map: every production component mapped to what you built](../diagrams/png/ch10-component-map.png)
+
+*Every component in the production system maps to something you already know how to build.*
 
 ---
 

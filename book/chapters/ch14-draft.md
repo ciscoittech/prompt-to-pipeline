@@ -60,6 +60,8 @@ Meal planning example: "I paste my dietary restrictions, what's in my fridge, wh
 
 Your turn. Map your current workflow. What do you paste? What do you check? What do you wish it remembered?
 
+<!-- DIAGRAM NEEDED: The "before" workflow — a simple linear diagram showing [What you type] -> [AI] -> [What you get] -> [What you check/fix by hand], with the manual work highlighted as the problem area. -->
+
 ### Step 3: Identify the constraint.
 
 Of everything that breaks, what breaks MOST or costs the MOST? That's the constraint. Fix that first. Ignore everything else until it's resolved.
@@ -147,6 +149,8 @@ Components: CLAUDE.md (preferences, household size). Cooking skill (cuisines, co
 Monthly maintenance: update fridge staples list, review whether preferred cuisines have shifted, verify allergy list is current, archive meal plans older than 8 weeks.
 
 Your turn. Draw the diagram. List the components. Write the maintenance plan.
+
+<!-- DIAGRAM NEEDED: The 8-step design process as a visual flow — from Frustration through Document — showing where the reader loops back (Step 6 adds components iteratively) and where gates exist (Step 7 tests by breaking). -->
 
 ---
 

@@ -436,6 +436,10 @@ Five CLAUDE.md files. Four state files. Five skills. Five hooks. One settings.js
 
 You started Chapter 4 with a single CLAUDE.md. Six chapters later, you have four systems — each with instructions, memory, expertise, quality checks, external connections, and staged workflows. That's not a prompt. That's infrastructure.
 
+![The complete system: all six components working together](../diagrams/png/ch09-complete-system.png)
+
+*The complete system after Chapter 9 — all six components in place across all four systems.*
+
 ---
 
 ## Break It on Purpose

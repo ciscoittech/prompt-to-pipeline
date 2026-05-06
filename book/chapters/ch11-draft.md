@@ -36,6 +36,8 @@ Notice the Content pipeline is 25-100x more expensive than a study quiz. That's 
 
 The subagent model matters here too. If your pipeline spawns subagents — separate AI sessions that handle individual stages — each one loads its own context from scratch. That means each subagent pays the startup cost independently. Three subagents in a pipeline means three loads of your CLAUDE.md, three loads of relevant state. It's more organized, but it's not free.
 
+<!-- DIAGRAM NEEDED: Token cost breakdown showing startup cost (CLAUDE.md + state + skills) versus per-action cost for different system operations (quiz, cover letter, pipeline). Visual that makes the "idle cost" concept concrete. -->
+
 ---
 
 ## The Model Ladder
@@ -64,6 +66,8 @@ How this maps to your four systems:
 - **Project Management**: Status report generation is standard. Date math and dependency checks are fast-tier tasks.
 
 The rule of thumb: if the task is following rules (formatting, checking, classifying), use the cheapest model. If the task requires judgment (writing, strategy, synthesis), use the model that's good at judgment.
+
+<!-- DIAGRAM NEEDED: Model ladder showing fast/standard/reasoning tiers with example tasks at each level and relative cost ratios. Visual decision tree for "which tier does this task need?" -->
 
 Here's what model routing looks like in practice. Say your Content System runs a five-stage pipeline: research, outline, draft, review, publish. Without routing, every stage uses the same standard-tier model. With routing:
 

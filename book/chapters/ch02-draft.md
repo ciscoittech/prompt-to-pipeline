@@ -30,6 +30,10 @@ This is what structured Instruction does. It removes ambiguity. Instead of hopin
 
 We tested this formally. Same AI model, same topic — a vague "quiz me" prompt versus the structured four-part version. We scored both outputs on relevance, specificity, difficulty calibration, and format compliance (each 1-5). The vague prompt averaged 11 out of 20. The structured prompt scored 20 out of 20. Every run. The biggest gap was format compliance — the vague prompt couldn't even produce the right number of questions consistently. The structured prompt nailed the format every time. (You can see the full eval with scoring breakdowns in the research section of this book's repository.)
 
+![Eval comparison: vague prompt vs structured prompt](../diagrams/png/ch02-eval-comparison.png)
+
+*Side-by-side scoring of the vague prompt versus the structured four-part version.*
+
 But notice something. To make this work, you had to manually type in what you got wrong last time. You dug through your notes from Chapter 1, found your weak topics, and typed them into the prompt. You were the delivery mechanism for your own history.
 
 What if you'd lost those notes? What if you'd been studying for two months instead of two sessions, and you couldn't remember which of the forty topics you'd covered were still weak? What if there were twelve concepts you'd gotten wrong across eight sessions, and you had to decide which ones were "still wrong" versus "wrong once but probably fine now"?
@@ -165,6 +169,10 @@ Each stage, on its own, is doing A-level work. The single-prompt version was doi
 
 But you just ran a three-stage pipeline by hand. You copy-pasted output from Stage 1 into Stage 2. You decided when to move between stages. You managed the entire workflow manually. For a focused thirty-minute study session, that overhead is tolerable. For a daily study habit? You'll collapse back to one prompt by the end of the week. Not because the staged approach doesn't work — because the manual overhead makes it unsustainable. The improvement is real. The effort to maintain it is not.
 
+![The manual overhead of running each concept by hand](../diagrams/png/ch02-manual-overhead.png)
+
+*The more concepts you add manually, the more work falls on you — not the AI.*
+
 In Chapter 11, you'll build a pipeline that runs these stages automatically — with quality checks between each one, and state updates that happen without you lifting a finger. For now, just notice: staging genuinely produces better results, and you will absolutely stop doing it the moment it's your job to manage each stage manually.
 
 ---
@@ -184,6 +192,10 @@ Five sessions. Same Study System, same topic. Here's what happened:
 **Session 5** (this chapter): Manual Flow. You staged the work into three steps — assess, generate, analyze. Each stage produced better results. But you managed the pipeline yourself.
 
 Each session got better. And each improvement required more manual effort from you. Here's the progression:
+
+![Session progression from Session 1 to Session 5](../diagrams/png/ch02-session-progression.png)
+
+*How each session added a concept — and added manual work.*
 
 | Session | Instruction | Memory | Control | Flow |
 |---------|------------|--------|---------|------|

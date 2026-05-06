@@ -34,6 +34,10 @@ Content creation: draft a blog post → compare it to your writing style → ide
 
 **The danger**: Loops without exit conditions run forever. "Good enough" has to be defined before the loop starts, not discovered along the way. Quiz score above 80% on weak areas. Draft passes the style check on all five criteria. Budget variance under 5%. Without a number, "one more round" becomes infinite revision.
 
+![The Loop pattern: Process, Check, Improve, Repeat](../diagrams/png/ch03-loop.png)
+
+*The Loop — each cycle carries forward what the last one revealed.*
+
 ---
 
 ## The Gate: Checking Before You Ship
@@ -62,6 +66,10 @@ Project Management: the AI generates a status report. Check: do the task counts 
 
 **The danger**: Gates can be too strict or too loose. A Gate that blocks everything is as useless as a Gate that passes everything. If your cover letter check requires five paragraphs of personalization for a wide-net application, nothing will ever ship. If your fact-check only verifies that answers "sound right," hallucinations will sail through. Calibration matters. Start strict and loosen over time — it's easier to relax a standard than to undo the damage from bad output that slipped through.
 
+![The Gate pattern: Stage, Quality Check, Pass or Rework](../diagrams/png/ch03-gate.png)
+
+*The Gate — a binary checkpoint between stages. Pass or go back.*
+
 ---
 
 ## The Router: Different Inputs, Different Handling
@@ -89,6 +97,10 @@ Project Management: same underlying status data, three different audiences. CEO 
 **When to use it**: When different inputs genuinely need different handling. The key word is "genuinely." If you can handle everything the same way with minor tweaks, you don't need a Router — you need a slightly more flexible process. Routing adds complexity. Only route when the difference in handling is substantial, not cosmetic.
 
 **The danger**: Route proliferation. Every route is a process you have to build, maintain, and debug. Three paths: manageable. Five paths: suspicious. Seven paths: you're probably splitting hairs that don't need splitting. If your Router has more than three paths, step back and ask: can any of these be merged? Do paths 2 and 3 really need different handling, or is it the same process with one variable changed?
+
+![The Router pattern: Decision Point, Path A or Path B](../diagrams/png/ch03-router.png)
+
+*The Router — same system, different treatment depending on what comes in.*
 
 ---
 
@@ -129,6 +141,10 @@ The notation is simple: boxes for processes, arrows for flow, diamonds for decis
 The napkin test forces you to leave out everything that doesn't matter. When you only have a small space, you can't include every edge case. You can't diagram what happens when the API times out AND the state file is corrupted AND the user gives bad input all at the same time. You have to draw the main path — the normal flow of the system — and trust that edge cases will be handled when they come up.
 
 That constraint is the feature. Systems that try to handle every scenario up front end up handling none of them well. Systems that nail the main path and add edge-case handling when real failures occur end up simple, reliable, and maintainable.
+
+![A napkin sketch of a system using all three patterns](../diagrams/png/ch03-napkin-sketch.png)
+
+*A napkin sketch of the Study System — boxes, arrows, and labels. That's all you need.*
 
 ---
 

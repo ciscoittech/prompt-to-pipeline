@@ -34,6 +34,8 @@ Or — and this is the subtle one — trust calibration. The AI's output gets go
 
 The framework — Instruction, Memory, Control, Flow — doesn't expire when the tools change. It's a map of the territory. The territory evolves. The map still works.
 
+<!-- DIAGRAM NEEDED: System evolution diagram showing three paths — component removal (problem solved upstream), component migration (same concept, new implementation), and new constraints (bottleneck shifts). Visual showing that the four concepts persist even as implementations change. -->
+
 ---
 
 ## Staying Current Without Drowning
@@ -163,6 +165,8 @@ What you have now that you didn't have 14 chapters ago:
 **1 evaluation framework** that lets you assess any new AI tool in 30 minutes
 
 This toolkit doesn't expire when the next model ships. It doesn't become obsolete when a new tool launches. The concepts are permanent. The implementations adapt. That's the difference between learning prompts — which change every release cycle — and learning systems, which transfer across everything.
+
+<!-- DIAGRAM NEEDED: The complete toolkit summary — 4 concepts, 6 components, 3 patterns, 1 debugging protocol, 1 design process — as a single reference visual. The "tear this page out and tape it to your monitor" diagram. -->
 
 ---
 

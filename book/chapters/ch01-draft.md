@@ -66,6 +66,10 @@ Every AI system — the study quiz, the cover letter, the project plan, anything
 
 Four concepts. Four failures. Every AI system you'll ever use — in any tool, on any platform, today or five years from now — is some combination of these four. The tools change. The framework doesn't.
 
+![The Four Concepts: Instruction, Memory, Control, and Flow](../diagrams/png/ch01-four-concepts.png)
+
+*The four universal concepts and the specific failure each one prevents.*
+
 Chapter 2 goes deep on each one, and you'll feel every single failure firsthand. But first, let's build something and watch it break.
 
 ---
@@ -168,6 +172,10 @@ Map what just happened to the four concepts:
 **Flow**: Absent. The AI didn't stage the work. A good study session would assess your current knowledge, target your gaps, generate appropriate practice, test you, then update your progress. That's five stages. Your prompt collapsed it into one.
 
 One out of four. That's what a prompt gives you.
+
+![A prompt-only system: Instruction present, Memory, Control, and Flow absent](../diagrams/png/ch01-prompt-only.png)
+
+*Your Study System after two sessions — one concept present, three missing.*
 
 ---
 

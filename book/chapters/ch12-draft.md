@@ -33,6 +33,8 @@ Every system failure you'll ever see maps to a component you built. Here's the d
 
 Notice what's NOT in this table: "The AI is broken." In six months of building these systems, you will never fix a problem by blaming the AI. Every failure maps to a component YOU built. That's not an insult — it's freedom. If you built it, you can fix it.
 
+<!-- DIAGRAM NEEDED: Failure taxonomy flowchart — symptom on the left, arrows leading through component identification to the specific file/check to inspect. A visual diagnostic map the reader can reference when debugging. -->
+
 ---
 
 ## The Debugging Protocol
@@ -50,6 +52,8 @@ Five steps. Not a flowchart to memorize — a habit to build.
 **Step 5: Add a check.** Whatever just broke, make sure you'll know if it breaks again. If the skill wasn't loading, add a line to your CLAUDE.md: "At session start, confirm you've loaded the career-profile skill." If the hook wasn't firing, add a test to your monthly maintenance: "Feed a fake company name and verify the hook catches it." The fix stops the bleeding. The check prevents the recurrence.
 
 The protocol takes 5 minutes when you follow it. It takes 45 minutes when you skip to guessing.
+
+<!-- DIAGRAM NEEDED: The 5-step debugging protocol as a linear flow: Symptom -> Map to Component -> Isolate -> Fix -> Add Check. Each step with a one-line description of what happens there. -->
 
 ---
 
