@@ -1,4 +1,4 @@
-# Enter the System
+# From Prompts to Pipelines
 
 **Building AI Systems That Actually Work**
 

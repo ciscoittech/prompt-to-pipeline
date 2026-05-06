@@ -1,4 +1,4 @@
-# Book State — Enter the System
+# Book State — From Prompts to Pipelines
 
 Last updated: 2026-05-06
 
