@@ -217,6 +217,12 @@ Now: you've named the four concepts and felt the first one break. You have a stu
 
 That's where it gets interesting.
 
+![Your system right now — no feedback loop](../diagrams/png/ch01-prompt-only.png)
+*Input → Prompt → AI → Output. No memory. No checks. No stages.*
+
+![After Session 2 — what's missing](../diagrams/png/ch01-four-concepts.png)
+*Only Instruction is present. Memory, Control, and Flow are absent.*
+
 
 ---
 
@@ -451,6 +457,15 @@ If your explanations reference your sessions with your data, the concepts are gr
 **The limit test.** Can you articulate, in your own words, why manual Memory, Control, and Flow don't scale? Not because this book said so — because you felt it. Session 4 was better but fragile. Session 5 was better but unsustainable. If you can explain why — too much overhead, human inconsistency, doesn't survive a busy week — you've internalized the motivation for everything Act 2 builds.
 
 Keep your notes. Chapter 3 uses them.
+
+![Sessions 1-5 — each concept added manually](../diagrams/png/ch02-session-progression.png)
+*Each session gets better. Each session requires more manual work from you.*
+
+![The core tension](../diagrams/png/ch02-manual-overhead.png)
+*By Session 5, you're doing 80% of the work so AI can do the other 20%.*
+
+![Eval result: basic vs structured prompt](../diagrams/png/ch02-eval-comparison.png)
+*We tested it. Vague prompt: 11/20. Structured prompt: 20/20. Every run.*
 
 
 ---
@@ -784,6 +799,22 @@ Act 2 gives you the tools to build it for real. You already know what you're bui
 One more thing before we start building. Everything in Act 2 comes from real systems the author uses in production — not tutorials written for a book. A study system tracking 127 curriculum items with quiz scoring and gap detection. A work operations system with 15 specialized agents and 80,000 reference documents. A content pipeline that's produced 26 scored posts across multiple platforms. The patterns you're about to learn are extracted from systems that run every day. The research repository for this book has the evidence — architecture diagrams, prompt comparisons, eval notebooks you can run yourself. When someone asks "does this actually work?" the answer isn't "trust me." It's "here's the data."
 
 Let's build.
+
+### The Three Patterns
+
+![Pattern 1: The Loop](../diagrams/png/ch03-loop.png)
+*Process → Check → Improve → Repeat. Exit when good enough.*
+
+![Pattern 2: The Gate](../diagrams/png/ch03-gate.png)
+*Stage → Quality Check → Pass or Rework. Binary decision.*
+
+![Pattern 3: The Router](../diagrams/png/ch03-router.png)
+*Decision Point → Different handling based on input type.*
+
+### The Full Study System
+
+![Study System — Napkin Sketch](../diagrams/png/ch03-napkin-sketch.png)
+*All 3 patterns combined. Router routes by mastery level. Gate checks answer accuracy. Loop repeats until score ≥ 80%. Memory reads at start, writes at end.*
 
 
 ---
