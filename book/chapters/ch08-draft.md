@@ -348,11 +348,11 @@ my-ai-systems/
 ├── .claude/
 │   ├── settings.json                  <- hooks (Ch 7) + web search permission (Ch 8)
 │   ├── skills/
-│   │   ├── editorial-voice.md         <- (Ch 6)
-│   │   ├── content-standards.md       <- (Ch 6)
-│   │   ├── study-method.md            <- (Ch 6)
-│   │   ├── career-profile.md          <- (Ch 6)
-│   │   └── pm-methodology.md          <- (Ch 6)
+│   │   ├── editorial-voice/SKILL.md   <- (Ch 6)
+│   │   ├── content-standards/SKILL.md <- (Ch 6)
+│   │   ├── study-method/SKILL.md      <- (Ch 6)
+│   │   ├── career-profile/SKILL.md    <- (Ch 6)
+│   │   └── pm-methodology/SKILL.md    <- (Ch 6)
 │   └── hooks/
 │       ├── verify-cover-letter.sh     <- (Ch 7)
 │       ├── check-duplicate.sh         <- (Ch 7)

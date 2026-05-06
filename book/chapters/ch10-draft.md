@@ -124,7 +124,7 @@ The agent synthesizes all four results into a single recommendation:
 
 Every number came from a tool. Every tool queried the database. The agent's job wasn't to know the answer — it was to know which questions to ask, in which order, and how to combine the results.
 
-Your skills from Chapter 7 gave Claude expertise in one domain at a time. This system's 37 tools give the agent expertise across finance, market intelligence, competitive analysis, field operations, inventory, social media trends, demand scoring, supply chain mapping, shipping logistics, and task management. Same concept — externalized knowledge loaded on demand. Different scale.
+Your skills from Chapter 6 gave Claude expertise in one domain at a time. This system's 37 tools give the agent expertise across finance, market intelligence, competitive analysis, field operations, inventory, social media trends, demand scoring, supply chain mapping, shipping logistics, and task management. Same concept — externalized knowledge loaded on demand. Different scale.
 
 ---
 
@@ -190,7 +190,7 @@ Here's the production system, mapped to what you built:
 
 **Hooks → Quality gates on data.** Your hooks caught bad output before it shipped. This system has quality gates on the data itself: minimum two overlapping products before claiming a supply chain relationship. Minimum 85% price ratio before flagging a supplier-reseller pair. A validation gate that checks the agent's strategic analysis through a separate model before delivering it. Same principle — automated checks that catch errors — applied to data integrity instead of document formatting.
 
-**Connections → Multiple data sources.** Your connections in Chapter 9 pulled data from one or two external sources. This system ingests from trade channel messages, social media APIs, field notes from market visits, customer surveys, vision-analyzed images, and web search results. Each source feeds a different dimension of the intelligence picture.
+**Connections → Multiple data sources.** Your connections in Chapter 8 pulled data from one or two external sources. This system ingests from trade channel messages, social media APIs, field notes from market visits, customer surveys, vision-analyzed images, and web search results. Each source feeds a different dimension of the intelligence picture.
 
 **Pipeline → Data ingestion through agent reasoning.** Your content pipeline moved a draft through research, writing, review, and publishing stages. This system's pipeline runs: data ingestion → entity normalization → aggregation → agent reasoning → validated recommendation. Different domain. Same shape. Stages that feed each other, with quality gates between them.
 

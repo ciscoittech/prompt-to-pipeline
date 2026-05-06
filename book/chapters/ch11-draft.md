@@ -97,7 +97,7 @@ A hook script runs on your computer. It costs nothing. Zero tokens. Zero dollars
 
 Asking the model "Does this cover letter mention the company name?" costs tokens. Writing a hook that greps for the company name costs nothing, runs in milliseconds, and never gets it wrong.
 
-Chapter 8's verify-cover-letter hook catches fabrication for $0.00. Asking the model to self-check that same output would cost $0.02-0.05 every time. Over 100 cover letters, that's $2-5 saved on a single check. Stack several hook-based checks and the savings compound.
+Chapter 7's verify-cover-letter hook catches fabrication for $0.00. Asking the model to self-check that same output would cost $0.02-0.05 every time. Over 100 cover letters, that's $2-5 saved on a single check. Stack several hook-based checks and the savings compound.
 
 The principle: if the check can be written as a grep, a word count, or a pattern match — make it a hook. Save the model for things that require understanding, not things that require counting.
 
@@ -171,7 +171,7 @@ The key insight across all three approaches: tracking isn't about guilt. It's ab
 
 Some parts of your system cost nothing. Use that.
 
-**Hooks are always free.** Every shell script in your hooks folder runs on your machine. No tokens, no API calls, no cost. Every check you move from "ask the model" to "run a script" saves money. The verify-cover-letter hook from Chapter 8. The word-count check on content drafts. The duplicate-application detector. All free.
+**Hooks are always free.** Every shell script in your hooks folder runs on your machine. No tokens, no API calls, no cost. Every check you move from "ask the model" to "run a script" saves money. The verify-cover-letter hook from Chapter 7. The word-count check on content drafts. The duplicate-application detector. All free.
 
 If you could replace every rule-based model call with a hook, you'd cut costs by 10-20% on most systems. Some checks need understanding (did this cover letter strike the right tone?) — those stay with the model. But anything that's counting, matching, or looking up a value belongs in a hook.
 

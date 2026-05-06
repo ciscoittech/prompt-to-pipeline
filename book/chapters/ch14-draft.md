@@ -184,7 +184,7 @@ You built the system 3 months ago. It ran well then. You haven't looked at it si
 
 Systems decay. Circumstances change. A system that worked in January may be actively misleading in April — and you won't notice because the output looks plausible.
 
-Schedule maintenance. Thirty minutes a month. Review state, skills, hooks, connections, and pipeline performance. Read the maintenance sections from the chapters where you built each component (state hygiene in Ch 5, skill versioning in Ch 7, hook tuning in Ch 8, connection health in Ch 9, pipeline bottlenecks in Ch 11). Those sections exist because this anti-pattern is real and common.
+Schedule maintenance. Thirty minutes a month. Review state, skills, hooks, connections, and pipeline performance. Read the maintenance sections from the chapters where you built each component (state hygiene in Ch 5, skill versioning in Ch 6, hook tuning in Ch 7, connection health in Ch 8, pipeline bottlenecks in Ch 9). Those sections exist because this anti-pattern is real and common.
 
 ---
 

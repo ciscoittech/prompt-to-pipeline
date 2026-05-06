@@ -189,7 +189,7 @@ Continue to Stage 4 (automated review).
 **Goal**: Automated quality check.
 **Actions**:
 - Run all content hooks against the draft:
-  - verify-content-quality.sh (banned words, word count, sourcing)
+  - check-content-quality.sh (banned words, word count, sourcing)
   - Voice consistency check against skill examples
 - Flag any issues found
 
@@ -232,7 +232,7 @@ Each stage has a **goal**, **actions**, and **exit criteria**. The goal says wha
 
 Notice the "wait for my approval" lines in Stages 1 and 2. You get to read the research before outlining starts. You get to approve the outline before drafting begins. You're the editor. You set the direction, then the system executes. Stages 3-5 run more automatically because the structure is already locked in. You can adjust this — add more approval points if you want tighter control, or remove them as you trust the system more.
 
-And notice how the pipeline uses EVERYTHING from prior chapters. CLAUDE.md (Ch 4) for instructions. content-state.md (Ch 5) for topic history. editorial-voice and content-standards skills (Ch 6) for expertise. verify-content-quality hook (Ch 7) for automated checks. Web search (Ch 8) for research. And now the pipeline (Ch 9) to stage it all. Six components, one system.
+And notice how the pipeline uses EVERYTHING from prior chapters. CLAUDE.md (Ch 4) for instructions. content-state.md (Ch 5) for topic history. editorial-voice and content-standards skills (Ch 6) for expertise. check-content-quality hook (Ch 7) for automated checks. Web search (Ch 8) for research. And now the pipeline (Ch 9) to stage it all. Six components, one system.
 
 ### Step 3: Create the pipeline workspace.
 
@@ -286,7 +286,7 @@ You read the outline. The structure builds — small mistake to catastrophic. Ma
 
 **Stage 3 — Draft.** Claude reads the approved outline. Loads both skills. Writes the full draft with your voice loaded from the start — not fading by paragraph four because drafting was the ONLY task this time, not research + drafting + checking all at once. Saves `content/pipeline/draft.md`.
 
-**Stage 4 — Review.** Your hooks fire against the draft. verify-content-quality.sh checks for banned words, word count, sourcing. Voice consistency is measured against your skill examples. Results: "All hooks pass. One [VERIFY] flag on a migration cost statistic — source found, flag resolved."
+**Stage 4 — Review.** Your hooks fire against the draft. check-content-quality.sh checks for banned words, word count, sourcing. Voice consistency is measured against your skill examples. Results: "All hooks pass. One [VERIFY] flag on a migration cost statistic — source found, flag resolved."
 
 **Stage 5 — Polish.** Claude formats for blog publication. Saves `content/pipeline/final.md`. Updates content-state.md with the new piece. Clears the pipeline tracker.
 
@@ -321,7 +321,7 @@ Five stages:
 1. **IDENTIFY** — Read study-state.md, find weak areas. Entry: at least 3 quiz sessions logged (so weak areas are data, not guesses).
 2. **RESEARCH** — Web search the weakest topic. Find explanations, tutorials, practice resources. Save to `study-system/pipeline/research.md`. Exit: at least 3 sources.
 3. **SYNTHESIZE** — Combine web findings with your notes. Load study-method skill. Produce a focused study brief in `study-system/pipeline/study-brief.md`.
-4. **PRACTICE** — Generate a 10-question quiz calibrated to the gap. Hook fires: verify-quiz-answers checks format.
+4. **PRACTICE** — Generate a 10-question quiz calibrated to the gap. Hook fires: check-quiz-format checks structure.
 5. **ANALYZE** — After you take the quiz, analyze results, update study-state.md. Topic above 70%? Move from "weak" to "moderate." Recommend next session's focus.
 
 This pipeline turns your Study System from a tutor into a researcher — identifies gaps, finds material, teaches it your way, tests you, tracks progress.
@@ -398,19 +398,17 @@ my-ai-systems/
   .claude/
     settings.json                        <-- hooks (Ch 7) + permissions + MCP config (Ch 8)
     skills/
-      editorial-voice.md                 <-- (Ch 6)
-      content-standards.md               <-- (Ch 6)
-      study-method.md                    <-- (Ch 6)
-      career-profile.md                  <-- (Ch 6)
-      pm-methodology.md                  <-- (Ch 6)
+      editorial-voice/SKILL.md           <-- (Ch 6)
+      content-standards/SKILL.md         <-- (Ch 6)
+      study-method/SKILL.md              <-- (Ch 6)
+      career-profile/SKILL.md            <-- (Ch 6)
+      pm-methodology/SKILL.md            <-- (Ch 6)
     hooks/
       verify-cover-letter.sh             <-- (Ch 7)
-      check-duplicate-application.sh     <-- (Ch 7)
-      verify-quiz-answers.sh             <-- (Ch 7)
-      check-weak-area-focus.sh           <-- (Ch 7)
-      verify-status-consistency.sh       <-- (Ch 7)
-      check-audience-format.sh           <-- (Ch 7)
-      verify-content-quality.sh          <-- (Ch 7)
+      check-duplicate.sh                 <-- (Ch 7)
+      check-quiz-format.sh              <-- (Ch 7)
+      check-status-dates.sh             <-- (Ch 7)
+      check-content-quality.sh           <-- (Ch 7)
     commands/
       content-pipeline.md               <-- (Ch 9) 5-stage content production
       study-deep.md                     <-- (Ch 9) multi-stage deep study
@@ -434,7 +432,7 @@ my-ai-systems/
     pipeline/                            <-- (Ch 9) intermediate artifacts
 ```
 
-Five CLAUDE.md files. Four state files. Five skills. Seven hooks. One settings.json. Four command files. Four pipeline workspaces.
+Five CLAUDE.md files. Four state files. Five skills. Five hooks. One settings.json. Four command files. Four pipeline workspaces.
 
 You started Chapter 4 with a single CLAUDE.md. Six chapters later, you have four systems — each with instructions, memory, expertise, quality checks, external connections, and staged workflows. That's not a prompt. That's infrastructure.
 
@@ -485,3 +483,5 @@ Six checks — one for each component, because this chapter completes them all.
 **You can name the complete system.** "My Content System has six components. Instructions tell Claude what to do. Skills tell it how to write in my voice. State tracks what I've published and where the pipeline is. Hooks check every draft for banned words, unsourced claims, and word count. Connections let Claude research topics online. And the pipeline breaks production into five stages — research, outline, draft, review, polish — with a quality gate between each one."
 
 That's not a prompt. That's a system. You built it, piece by piece, across six chapters. And you can build another one — for any complex, recurring work — using the same six components in the same pattern.
+
+Now you've seen how to build a system from scratch. Chapter 10 shows you what happens when all six components run together under real pressure — a production case study where the stakes are higher than a study quiz or a blog draft. You'll see how the same patterns you just built handle work that actually costs money when it breaks.

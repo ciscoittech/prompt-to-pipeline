@@ -120,7 +120,7 @@ mark the status as "Archived" — don't remove it.
 
 This is the critical wiring. The `@job-state.md` line tells Claude Code to load that file's contents into its context automatically when you start a session. Without the `@`, the file exists but Claude never sees it. You'll test this in the "Break It" section — remove the `@`, and watch Claude forget everything.
 
-Your CLAUDE.md just became a conductor. In Chapter 4, it told Claude WHO you are and HOW to work. Now it tells Claude WHICH FILES to read and WHAT TO DO with them. The instruction file orchestrates the state file.
+Your CLAUDE.md just became a conductor. In Chapter 4, it told Claude WHO you are and HOW to work. Now it tells Claude WHICH FILES to read and WHAT TO DO with them. CLAUDE.md orchestrates the state file.
 
 ### Step 3: Run Session 1 — first application.
 
