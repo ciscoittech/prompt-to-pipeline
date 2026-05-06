@@ -1,69 +1,68 @@
-# Chapter Dependency Graph — Systems Thinking Edition
+# Chapter Dependency Graph — From Prompts to Pipelines (v3)
 
-## Component Dependencies
-
-Each component builds on the previous. You can't add a hook until the reader has state and skills.
+## Dependency Tree
 
 ```
-Ch 00 (Introduction)
-  └── Ch 01 (What Makes a System)
-       └── Ch 02 (First System — adds PROMPT)
-            └── Ch 03 (Why Systems Beat Prompts — feedback concept)
-                 └── Ch 04 (State — adds STATE)
-                      └── Ch 05 (State in Action)
-                           └── Ch 06 (Knowledge Problem — bridges to skills)
-                                └── Ch 07 (Skills — adds SKILL)
-                                     └── Ch 08 (Hooks — adds HOOK)
-                                          └── Ch 09 (Combining Components)
-                                               └── Ch 10 (Connections — adds CONNECTION)
-                                                    └── Ch 11 (Pipelines — adds PIPELINE)
-                                                         └── Ch 12 (Design Patterns)
-                                                              └── Ch 13 (Personal OS)
-                                                                   └── Ch 14 (What's Next)
+Act 1 (tool-agnostic):
+  Ch 1 (4 concepts + Sessions 1-2)
+    └── Ch 2 (concepts deep + Sessions 3-5)
+         └── Ch 3 (3 patterns + napkin sketch)
+
+Act 2 (CLI-demonstrated):
+  Part II — First Builds:
+    Ch 3 ──► Ch 4 (Prompt — Study System deep build)
+               └── Ch 5 (State — Job Hunting deep build)
+                    └── Ch 6 (deepening — Meal Planner)
+
+  Part III — Knowledge & Guard Rails:
+    Ch 6 ──► Ch 7 (Skill — Content System deep build)
+               └── Ch 8 (Hook — Job Hunting deep build)
+                    └── Ch 9 (integration — Job Hunting full system)
+
+  Part IV — Connections & Pipelines:
+    Ch 9 ──► Ch 10 (Connection — Study System deep build)
+               └── Ch 11 (Pipeline — Content System deep build)
+
+  Part V — Mastery:
+    Ch 11 ──► Ch 12 (Debugging — all 4 systems)
+                └── Ch 13 (Composition — personal AI OS)
 ```
 
 ## Hard Dependencies
 
-| Chapter | Requires | Component Gate |
-|---------|----------|---------------|
-| 02 | 01 | Introduces PROMPT |
-| 04 | 02, 03 | Introduces STATE (needs prompt + feedback concept) |
-| 07 | 04 | Introduces SKILL (needs state for context) |
-| 08 | 07 | Introduces HOOK (needs skill to validate against) |
-| 10 | 08, 09 | Introduces CONNECTION (needs all prior components) |
-| 11 | 10 | Introduces PIPELINE (needs connections for real data) |
-| 13 | 11, 12 | COMPOSITION (needs all 6 components + design patterns) |
+| Chapter | Requires | Why |
+|---------|----------|-----|
+| 4 | Ch 1-3 | First CLI build — needs all Act 1 concepts + patterns |
+| 5 | Ch 4 | State needs structured prompt skills established |
+| 7 | Ch 5-6 | Skill needs state context (loads alongside state) |
+| 8 | Ch 7 | Hook validates against skills — can't have hooks without loaded knowledge |
+| 10 | Ch 8-9 | Connection needs all 4 prior components working together |
+| 11 | Ch 10 | Pipeline stages use connections for live data |
+| 13 | Ch 11-12 | Composition needs all 6 components + debugging knowledge |
 
-## Project Dependencies
-
-| Project | Chapter | Builds On Project |
-|---------|---------|-------------------|
-| 1. File Organizer | Ch 02 | (none — first project) |
-| 2. Meeting Notes | Ch 04 | Project 1 (same prompt skills, adds state) |
-| 3. Expense Tracker | Ch 05 | Project 2 (same state pattern, different domain) |
-| 4. Voice Writer | Ch 07 | Project 2/3 (adds skill to existing state pattern) |
-| 5. Budget Guardian | Ch 08 | Project 3 (adds hook to expense tracker) |
-| 5.5. Doc Review | Ch 09 | Projects 4+5 (combines skill + hook in new domain) |
-| 6. Research Engine | Ch 10 | Project 5.5 (adds external connection) |
-| 7. Weekly Report | Ch 11 | Project 6 (adds pipeline to research-capable system) |
-| 8. Personal OS | Ch 13 | ALL (composes multiple systems) |
-
-## Recommended Drafting Order
+## Drafting Order
 
 Strict sequential — each chapter depends on the previous:
-1. Ch 00 → 01 → 02 → 03 (Part I: conceptual foundation + first prompt)
-2. Ch 04 → 05 (Part II: state)
-3. Ch 06 → 07 → 08 → 09 (Part III: skills + hooks + integration)
-4. Ch 10 → 11 → 12 (Part IV: connections + pipelines + design)
-5. Ch 13 → 14 (Part V: composition + future)
+1. Ch 1 → 2 → 3 (Act 1) ✅ DONE
+2. Ch 4 → 5 → 6 (Part II: First Builds)
+3. Ch 7 → 8 → 9 (Part III: Knowledge & Guard Rails)
+4. Ch 10 → 11 (Part IV: Connections & Pipelines) — **MCP research required before Ch 10**
+5. Ch 12 → 13 (Part V: Mastery)
 
 ## Cross-Reference Rules
 
 ### Allowed
-- Reference any prior chapter's project: "Remember the expense tracker from Chapter 5? We're adding a guard rail to it."
-- Reference prior components: "You already know how state files work. Skills are the same idea for knowledge instead of memory."
+- Reference any prior chapter's system: "The Study System from Ch 4 — we're adding state to it"
+- Reference prior components with brief reminder: "You already know state files. Skills are the same idea for knowledge instead of memory."
+- Brief forward teasers for motivation: "In Ch 8, you'll add automated checks" — but don't teach how
 
 ### Forbidden
-- Never reference a higher-numbered chapter
-- Never say "we'll cover this later"
-- Never introduce a component before its chapter (don't mention hooks until Ch 8)
+- Never reference a higher chapter's CONTENT
+- Never introduce a component before its chapter
+- Never use a component in an example before the reader has built it
+- Never say "we'll cover this later" as a crutch for incomplete explanation
+
+### Act 1 → Act 2 References
+- Act 1 can tease Act 2 tools briefly ("In Act 2, you'll build this for real")
+- Act 2 should reference Act 1 sessions: "Remember Session 3 where you typed your weak areas by hand? That's what this state file replaces."
+- Act 2 should reference Act 1 patterns: "This is the Loop pattern from Chapter 3 — but now the system runs it, not you."

@@ -1,31 +1,32 @@
 ---
-name: cowork-researcher
-description: Research Cowork features, capabilities, and best practices from Anthropic docs and community sources. Use when investigating a specific capability. Loaded by /research-topic command.
+name: cli-researcher
+description: Research AI CLI tool features, capabilities, and cross-tool patterns. Covers Claude Code, Codex, Kimi CLI, Warp, and GUI alternatives. Loaded by /research-topic command.
 ---
 
-# Cowork Researcher Skill
+# CLI & AI Tool Researcher Skill
 
 ## Purpose
 
-Research specific Cowork capabilities from official Anthropic documentation and community sources. Produce synthesized notes that the writer can use to draft chapters.
+Research AI CLI tool capabilities, cross-tool patterns, and implementation details. The book is CLI-demonstrated and interface-agnostic — research must cover how features work across tools, not just one vendor.
 
 ## Research Protocol
 
 ### Source Priority
-1. **Anthropic official docs** (support.claude.com, anthropic.com) — always check first
-2. **Anthropic training** (anthropic.skilljar.com) — structured learning materials
-3. **Community guides with tested examples** (GitHub repos, DataCamp, Jeff Su, Chris Bailey)
-4. **Community prompt collections** (ClaudeCowork.com, Awesome Cowork)
+1. **Official tool docs** — Claude Code (code.claude.com), Codex (developers.openai.com), Kimi CLI (moonshotai.github.io), Warp (docs.warp.dev)
+2. **Cross-tool comparisons** — articles comparing CLI tools, feature matrices
+3. **Community guides with tested examples** (GitHub repos, blog posts with real output)
+4. **GUI equivalents** — how the same feature works in Cowork, Cursor, VS Code
 5. **Blog posts and reviews** — lowest priority, verify claims
 
 ### Research Steps
 
 1. **Define the question** — What specific capability or feature are we researching?
-2. **Check official docs first** — Use WebSearch for `site:support.claude.com [topic]` and `site:anthropic.com [topic]`
-3. **Check community sources** — Search for tested examples and real-world usage
-4. **Cross-reference** — If community says X works, verify against official docs
+2. **Check official docs first** — Search tool-specific documentation
+3. **Check cross-tool compatibility** — Does this work in Claude Code AND Codex/Kimi/others?
+4. **Check GUI equivalents** — How does this work in Cowork, Cursor, VS Code?
 5. **Synthesize** — Write structured notes in `research/synthesized/`
-6. **Date everything** — Cowork changes fast; every claim gets a source date
+6. **Date everything** — AI tools change fast; every claim gets a source date
+7. **Tag portability** — Mark each finding as [PORTABLE] (works across tools) or [TOOL-SPECIFIC]
 
 ### Output Format
 

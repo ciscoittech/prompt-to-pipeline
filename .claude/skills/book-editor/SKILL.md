@@ -40,10 +40,12 @@ Review chapter drafts to ensure they meet quality standards for a non-technical 
 - [ ] No assumed familiarity with other AI tools
 
 ### System Completeness
-- [ ] Chapter follows the template: Hook → System → Walk-Through → Prompts → Quality Gate → Prompt Pack
-- [ ] The system is a repeatable workflow, not a one-time explanation
+- [ ] Act 1 chapters follow: Hook → Concept → Exercise → Limitation → Assessment
+- [ ] Act 2 component chapters follow: Problem → See System → New Component → Build It → Extend It → Maintain It → Diagram → Break It → Quality Gate
+- [ ] Act 2 integration chapters follow: What You Have → How They Connect → Build It → Design Principles → Quality Gate
 - [ ] Quality gate checks are concrete and verifiable
-- [ ] Prompts follow the 4-part formula
+- [ ] Prompts follow the 4-part formula (Act 2)
+- [ ] CLI commands shown, files visible (Act 2)
 
 ### Progression Check
 - [ ] No forward references to later chapters
@@ -62,9 +64,9 @@ Review chapter drafts to ensure they meet quality standards for a non-technical 
 | Dimension | Score | Notes |
 |-----------|-------|-------|
 | Clarity | _/5 | |
-| System | _/5 | |
+| Systems Thinking | _/5 | |
 | Voice | _/5 | |
-| Prompts | _/5 | |
+| Build Quality | _/5 | |
 | Progression | _/5 | |
 | Quality Gate | _/5 | |
 | **TOTAL** | **_/30** | |
