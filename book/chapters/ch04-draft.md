@@ -1,10 +1,14 @@
 # Chapter 4: Structured Prompts. Your Systems Start Here
 
-You have a napkin sketch of the system you want to build. You know the four concepts, the three patterns, and the six-step design process. You've felt each concept work and watched each one fail under manual execution.
+Remember that career decision from Chapter 1? The one where four conversations produced zero accumulation — your manager, your friend, the recruiter, and the ceiling at 1am all operating in isolation? You diagnosed exactly what was missing: no memory carrying forward, no quality checks, no staged process. You could see the broken system.
 
-Time to stop sketching and start building.
+Then in Chapter 2, you felt it break in real time. Five study sessions, each one better than the last, each one requiring more manual work from you. By Session 5 you were the memory, the quality control, and the workflow manager. The AI's contribution was shrinking while yours was growing. In Chapter 3 you learned the shapes — Loop, Gate, Router — and sketched the system on paper.
 
-This chapter is where the book shifts. Act 1 gave you the thinking. Act 2 gives you the tools. And the first tool isn't what you'd expect. It's not a prompt you type. It's a file you write once that tells the AI who you are, what you're building, and how to work. A file that loads automatically every time you start a session, so you never re-explain yourself again.
+You have the thinking. Now you need the machinery.
+
+This is where the book shifts, and it's going to feel like a big jump. Act 1 was universal. Any AI tool, any situation, pen and paper if you wanted. Act 2 is specific. You're going to open a terminal, create files, and build real systems that run without you managing every piece by hand. The concepts are the same four you already know. The difference is that the computer handles them instead of you.
+
+We're starting with the Study System because it's the simplest to wire up — one topic, one user, clear right-and-wrong answers. Your job search, your project management, your content pipeline: those get their builds in the chapters ahead, and they'll go faster because you'll already know how the pieces connect. The first tool isn't what you'd expect. It's not a prompt you type. It's a file you write once that tells the AI who you are, what you're building, and how to work. A file that loads automatically every time you start a session, so you never re-explain yourself again.
 
 ---
 
@@ -18,7 +22,7 @@ Here's what to install:
 
 **A terminal.** If you're on a Mac, you already have one (it's called Terminal, in Applications/Utilities). But I recommend Warp. It's free, open-source, and designed for working with AI tools. Download it at warp.dev. On Windows, use Windows Terminal or Warp. On Linux, you already know what a terminal is.
 
-**An AI CLI tool.** This book shows Claude Code, but the patterns work in OpenAI's Codex, Kimi CLI, or any AI tool that runs in the terminal. Install Claude Code by typing:
+**An AI CLI tool.** This book shows Claude Code, but the patterns work in OpenAI's Codex, Kimi CLI, or any AI tool that runs in the terminal. Anthropic even publishes pre-built plugins (collections of skills, commands, and connections bundled for specific roles like sales or marketing) — but those are opinionated kits for one ecosystem. This book teaches you the skills to build your own, for any tool. Install Claude Code by typing:
 
 ```
 npm install -g @anthropic-ai/claude-code
